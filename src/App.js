@@ -1,12 +1,16 @@
-import './App.css';
-import Product from './components/Product';
+import React from 'react';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import ProductList from './pages/ProductList';
 
 function App() {
   return (
-    <div className="App">
-        <h1> eCommerce react</h1>
-         <Product /> {/* Aquí estás renderizando el componente Product */}
-    </div>
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<ProductList />} />
+      </Routes>
+    </Router>
   );
 }
 
