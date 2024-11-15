@@ -7,21 +7,20 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import styles from './Navbar.module.css'; // Asegúrate de que la ruta sea correcta
-
+import styles from './NavbarStyles';
 export default function Navbar() {
+  
   return (
-    <Box className={styles.navbarContainer}>
-      <AppBar position="static">
+    <Box sx={styles.navbarContainer}>
+      <AppBar position="fixed" sx={styles.appBar} >
         <Toolbar>
-          <IconButton  className={styles.menuButton} size="large"  edge="start"  color="inherit" aria-label="menu" >
+          <IconButton sx={styles.menuButton} size="large" edge="start" aria-label="menu">
             <MenuIcon />
           </IconButton>
-          <Typography   variant="h6" component="div" className={styles.navbarTitle}>
-            Perfumeria TITO
+          <Typography variant="h6" component="div" sx={styles.navbarTitle}>
+            Elixir Dorado
           </Typography>
-          {/* Botón Login sin sx, solo usando la clase CSS */}
-          <Button className={styles.navbarButton} color="inherit" component={Link} to="/login">
+          <Button sx={styles.navbarButton} component={Link} to="/login">
             Login
           </Button>
         </Toolbar>
