@@ -1,4 +1,3 @@
-// src/components/ProductCard/ProductCard.js
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ShareIcon from '@mui/icons-material/Share';
@@ -36,7 +35,7 @@ export default function ProductCard({ product }) {
     <Card sx={{ maxWidth: 345 }}>
       <CardHeader
         title={product.name}
-        subheader={product.category} // Ej. 'Perfume para hombre'
+        subheader={product.category}
         action={<Typography variant="h5">{accounting.formatMoney(product.price, "$")}</Typography>}
       />
       <CardMedia
@@ -69,7 +68,7 @@ export default function ProductCard({ product }) {
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography variant="body2" color="textSecondary">
-            {product.details} {/* Aquí puedes mostrar detalles adicionales */}
+            {product.details}
           </Typography>
         </CardContent>
       </Collapse>
