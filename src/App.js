@@ -1,14 +1,14 @@
 import React from 'react';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import Navbar from './components/NavBar/Navbar';
-import ProductList from './pages/ProductList';
+import ProductGrid from './pages/ProductGrid';
 
 function App() {
   return (
     <Router>
       <Navbar />
       <Routes>
-        <Route path="/" element={<ProductList />} />
+        <Route path="/" element={<ProductGrid />} />
       </Routes>
     </Router>
   );
