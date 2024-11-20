@@ -6,12 +6,22 @@ import TextCarousel from '../Carrusel/TextCarousel ';
 const ProductCardHeader = ({ product }) => {
   const titleRef = useRef(null);
   const [isOverflowing, setIsOverflowing] = useState(false);
+  const [startAnimation, setStartAnimation] = useState(false);
 
   useEffect(() => {
     // Comprobar si el texto del título excede el ancho de la tarjeta
     if (titleRef.current) {
       const isTitleOverflowing = titleRef.current.scrollWidth > titleRef.current.clientWidth;
       setIsOverflowing(isTitleOverflowing);
+
+      // Si el texto excede el ancho, activar el carrusel después de 2 segundos
+      if (isTitleOverflowing) {
+        const timer = setTimeout(() => {
+          setStartAnimation(true);
+        }, 0.5); // Retraso de 1 segundos antes de empezar la animación
+
+        return () => clearTimeout(timer); // Limpiar el temporizador
+      }
     }
   }, [product.title]);
 
@@ -29,14 +39,19 @@ const ProductCardHeader = ({ product }) => {
     >
       {/* Título del Producto - Carrusel si el texto es largo */}
       <Box sx={{ width: '100%', overflow: 'hidden' }}>
-        {isOverflowing ? (
+        {isOverflowing && startAnimation ? (
+          // Si el título excede, activar el carrusel
           <TextCarousel text={product.title} />
         ) : (
+          // Si el título no excede, mostrarlo sin movimiento
           <Typography
             ref={titleRef}
             variant="h6"
             noWrap
-            sx={{ fontWeight: 'bold', fontSize: { xs: '1rem', sm: '1.25rem' } }}
+            sx={{
+              fontWeight: 'bold',
+              fontSize: { xs: '1rem', sm: '1.25rem' },
+            }}
           >
             {product.title}
           </Typography>
