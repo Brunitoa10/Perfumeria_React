@@ -1,16 +1,14 @@
-import CardContent from '@mui/material/CardContent';
-import Collapse from '@mui/material/Collapse';
-import Typography from '@mui/material/Typography';
+import { CardContent, Typography } from '@mui/material';
 import React from 'react';
 
-const ProductCardDetails = ({ expanded, details }) => (
-  <Collapse in={expanded} timeout="auto" unmountOnExit>
+const ProductCardDetails = ({ description }) => {
+  return (
     <CardContent>
-      <Typography variant="body2" color="textSecondary">
-        {details}
+      <Typography paragraph>
+        {description || 'No description available.'}
       </Typography>
     </CardContent>
-  </Collapse>
-);
+  );
+};
 
 export default ProductCardDetails;

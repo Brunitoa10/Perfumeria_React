@@ -1,11 +1,21 @@
 import MenuIcon from '@mui/icons-material/Menu';
 import { IconButton, Menu, MenuItem } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { getCategories } from '../../services/productService';
 import styles from './NavbarStyles';
 
 const NavbarMenuButton = () => {
   const [anchorEl, setAnchorEl] = useState(null);
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      const data = await getCategories();
+      setCategories(data);
+    };
+    fetchCategories();
+  }, []);
 
   const handleMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -34,12 +44,16 @@ const NavbarMenuButton = () => {
         <MenuItem component={Link} to="/" onClick={handleMenuClose}>
           Home
         </MenuItem>
-        <MenuItem component={Link} to="/category/Perfume for men" onClick={handleMenuClose}>
-          Men's perfume
-        </MenuItem>
-        <MenuItem component={Link} to="/category/Perfume for Her" onClick={handleMenuClose}>
-          Women's perfume
-        </MenuItem>
+        {categories.map((category) => (
+          <MenuItem
+            key={category}
+            component={Link}
+            to={`/category/${category}`}
+            onClick={handleMenuClose}
+          >
+            {category}
+          </MenuItem>
+        ))}
       </Menu>
     </>
   );

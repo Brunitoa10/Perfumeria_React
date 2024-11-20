@@ -1,11 +1,10 @@
-// src/pages/ProductList.js
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ProductCard from '../components/Product/ProductCard';
-import Product_Data from '../ProductData';
+import { getAllProducts } from '../services/productService';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: '#fff',
@@ -15,17 +14,24 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-
-
 export default function ProductGrid() {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const data = await getAllProducts();
+      setProducts(data);
+    };
+    fetchProducts();
+  }, []);
+
   return (
-    <Box sx={{ flexGrow: 1, marginTop: '5.5em' }}>
+    <Box sx={{ flexGrow: 1, marginTop: '5.5em', padding: '1em' }}>
       <Grid container spacing={3}>
-        {Product_Data.map((product) => (
-          <Grid item xs={12} sm={6} md={4} lg={3}>
+        {products.map((product) => (
+          <Grid item xs={12} sm={6} md={4} lg={3} key={product.id}>
             <Item>
-              {/* Reutiliza el componente ProductCard para cada producto */}
-              <ProductCard key={product.id} product={product} />
+              <ProductCard product={product} />
             </Item>
           </Grid>
         ))}

@@ -1,8 +1,16 @@
-import CardMedia from '@mui/material/CardMedia';
+import { CardMedia } from '@mui/material';
 import React from 'react';
 
-const ProductCardMedia = ({ imageUrl, name }) => (
-  <CardMedia component="img" height="194" image={imageUrl} alt={name} />
-);
+const ProductCardMedia = ({ image, title }) => {
+  return (
+    <CardMedia
+      component="img"
+      alt={title}
+      height="200"
+      image={image}
+      sx={{ objectFit: 'contain', width: '100%' }}
+    />
+  );
+};
 
 export default ProductCardMedia;
