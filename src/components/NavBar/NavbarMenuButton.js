@@ -31,11 +31,13 @@ const NavbarMenuButton = () => {
         open={Boolean(anchorEl)}
         onClose={handleMenuClose}
       >
-        
-        <MenuItem component={Link} to="/category/perfume-men" onClick={handleMenuClose}>
+        <MenuItem component={Link} to="/" onClick={handleMenuClose}>
+          Home
+        </MenuItem>
+        <MenuItem component={Link} to="/category/Perfume for men" onClick={handleMenuClose}>
           Men's perfume
         </MenuItem>
-        <MenuItem component={Link} to="/category/perfume-women" onClick={handleMenuClose}>
+        <MenuItem component={Link} to="/category/Perfume for Her" onClick={handleMenuClose}>
           Women's perfume
         </MenuItem>
       </Menu>
