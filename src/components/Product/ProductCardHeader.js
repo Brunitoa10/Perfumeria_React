@@ -64,7 +64,7 @@ const ProductCardHeader = ({ product }) => {
       </Typography>
 
       {/* Precio */}
-      <Typography variant="h6" color="primary" sx={{ fontWeight: 'bold', marginTop: '1em', fontSize: { xs: '1.2rem', sm: '1.5rem' } }}>
+      <Typography variant="h6" color="secundary" sx={{ fontWeight: 'bold', marginTop: '1em', fontSize: { xs: '1.2rem', sm: '1.5rem' } }}>
         ${product.price}
       </Typography>
     </CardContent>
