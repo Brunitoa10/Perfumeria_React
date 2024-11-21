@@ -1,27 +1,11 @@
 import { Box, CardContent, Typography } from '@mui/material';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef } from 'react';
+import useTextOverflow from '../../hooks/useTextOverflow';
 import TextCarousel from '../Carrusel/TextCarousel ';
-
 
 const ProductCardHeader = ({ product }) => {
   const titleRef = useRef(null);
-  const [isOverflowing, setIsOverflowing] = useState(false);
-  const [startAnimation, setStartAnimation] = useState(false);
-
-  useEffect(() => {
-    if (titleRef.current) {
-      const isTitleOverflowing = titleRef.current.scrollWidth > titleRef.current.clientWidth;
-      setIsOverflowing(isTitleOverflowing);
-
-      if (isTitleOverflowing) {
-        const timer = setTimeout(() => {
-          setStartAnimation(true);
-        }, 0.5);
-
-        return () => clearTimeout(timer);
-      }
-    }
-  }, [product.title]);
+  const { isOverflowing, startAnimation } = useTextOverflow(titleRef);
 
   return (
     <CardContent
@@ -57,7 +41,11 @@ const ProductCardHeader = ({ product }) => {
         {product.category}
       </Typography>
 
-      <Typography variant="h6" color="secundary" sx={{ fontWeight: 'bold', marginTop: '1em', fontSize: { xs: '1.2rem', sm: '1.5rem' } }}>
+      <Typography
+        variant="h6"
+        color="#000000"
+        sx={{ fontWeight: 'bold', marginTop: '1em', fontSize: { xs: '1.2rem', sm: '1.5rem' } }}
+      >
         ${product.price}
       </Typography>
     </CardContent>
