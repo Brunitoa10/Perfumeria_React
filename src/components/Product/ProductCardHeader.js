@@ -9,18 +9,16 @@ const ProductCardHeader = ({ product }) => {
   const [startAnimation, setStartAnimation] = useState(false);
 
   useEffect(() => {
-    // Comprobar si el texto del título excede el ancho de la tarjeta
     if (titleRef.current) {
       const isTitleOverflowing = titleRef.current.scrollWidth > titleRef.current.clientWidth;
       setIsOverflowing(isTitleOverflowing);
 
-      // Si el texto excede el ancho, activar el carrusel después de 2 segundos
       if (isTitleOverflowing) {
         const timer = setTimeout(() => {
           setStartAnimation(true);
-        }, 0.5); // Retraso de 1 segundos antes de empezar la animación
+        }, 0.5);
 
-        return () => clearTimeout(timer); // Limpiar el temporizador
+        return () => clearTimeout(timer);
       }
     }
   }, [product.title]);
@@ -37,13 +35,10 @@ const ProductCardHeader = ({ product }) => {
         textAlign: 'center',
       }}
     >
-      {/* Título del Producto - Carrusel si el texto es largo */}
       <Box sx={{ width: '100%', overflow: 'hidden' }}>
         {isOverflowing && startAnimation ? (
-          // Si el título excede, activar el carrusel
           <TextCarousel text={product.title} />
         ) : (
-          // Si el título no excede, mostrarlo sin movimiento
           <Typography
             ref={titleRef}
             variant="h6"
@@ -58,12 +53,10 @@ const ProductCardHeader = ({ product }) => {
         )}
       </Box>
 
-      {/* Categoría */}
       <Typography variant="body2" color="textSecondary" sx={{ fontSize: { xs: '0.8rem', sm: '1rem' } }}>
         {product.category}
       </Typography>
 
-      {/* Precio */}
       <Typography variant="h6" color="secundary" sx={{ fontWeight: 'bold', marginTop: '1em', fontSize: { xs: '1.2rem', sm: '1.5rem' } }}>
         ${product.price}
       </Typography>
