@@ -6,12 +6,8 @@ import React, { useEffect, useState } from 'react';
 import ProductCard from '../components/Product/ProductCard';
 import { getAllProducts } from '../services/productService';
 
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: '#fff',
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
+const Item = styled(Paper)(() => ({
   textAlign: 'center',
-  color: theme.palette.text.secondary,
 }));
 
 export default function ProductGrid() {

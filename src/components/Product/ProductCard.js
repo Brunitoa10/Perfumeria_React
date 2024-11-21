@@ -22,11 +22,11 @@ const ProductCard = ({ product, onAddToCart }) => {
         display: 'flex',
         flexDirection: 'column',
         height: '100%',
-        border: 'none',
-        boxShadow: 'none',
-        margin: '1em',
+        //border: 'none',
+       // boxShadow: 'none',
+       // margin: '1em',
         width: '100%',
-        borderRadius: '8px',
+        //borderRadius: '8px',
       }}
     >
       <ProductCardMedia image={product.image} title={product.title} />

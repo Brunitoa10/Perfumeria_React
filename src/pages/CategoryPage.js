@@ -7,11 +7,8 @@ import { useParams } from 'react-router-dom';
 import ProductCard from '../components/Product/ProductCard';
 import useProductsByCategory from '../hooks/useProductsByCategory';
 
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: '#fff',
-  padding: theme.spacing(2),
+const Item = styled(Paper)(() => ({
   textAlign: 'center',
-  color: theme.palette.text.secondary,
 }));
 
 const CategoryPage = () => {
