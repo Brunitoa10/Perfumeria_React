@@ -20,13 +20,11 @@ const ProductCard = ({ product, onAddToCart }) => {
     <Card
       sx={{
         display: 'flex',
+        backgroundColor: '#F7F7F7',
         flexDirection: 'column',
         height: '100%',
-        //border: 'none',
-       // boxShadow: 'none',
-       // margin: '1em',
         width: '100%',
-        //borderRadius: '8px',
+        borderRadius: '8px',
       }}
     >
       <ProductCardMedia image={product.image} title={product.title} />

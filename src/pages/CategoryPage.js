@@ -9,6 +9,7 @@ import useProductsByCategory from '../hooks/useProductsByCategory';
 
 const Item = styled(Paper)(() => ({
   textAlign: 'center',
+  borderRadius: '8px',
 }));
 
 const CategoryPage = () => {
@@ -21,7 +22,7 @@ const CategoryPage = () => {
   return (
     <div>
       <h1>{categoryName}</h1>
-      <Box sx={{ flexGrow: 1, marginTop: '5.5em', padding: '1em' }}>
+      <Box sx={{ flexGrow: 1, marginTop: '-1.4em', padding: '1em', backgroundColor: '#9c9c9c'}}>
         <Grid container spacing={3}>
           {products.map((product) => (
             <Grid item xs={12} sm={6} md={4} lg={3} key={product.id}>
