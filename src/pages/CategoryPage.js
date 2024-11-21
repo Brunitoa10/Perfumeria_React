@@ -25,7 +25,7 @@ const CategoryPage = () => {
       <Box
         sx={{
           flexGrow: 1,
-          marginTop: '-1.4em',
+          marginTop: '1em',
           padding: {
             xs: '0.5em',
             sm: '1em',
