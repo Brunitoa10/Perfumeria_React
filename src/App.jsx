@@ -3,16 +3,18 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
 import Navbar from './components/NavBar/Navbar';
 import ProductGrid from './components/Product/ProductGrid';
-import ShoppingCart from './pages/ShoppingCart'; // Importa el carrito
+import Login from './pages/Login';
+import ShoppingCart from './pages/ShoppingCart';
 
 function App() {
   return (
     <Router>
       <div className="App">
-        <Navbar /> {/* Siempre visible */}
+        <Navbar />
         <Routes>
-          <Route path="/" element={<ProductGrid />} /> {/* Página principal */}
-          <Route path="/shopping-cart" element={<ShoppingCart />} /> {/* Carrito */}
+          <Route path="/" element={<ProductGrid />} />
+          <Route path="/shopping-cart" element={<ShoppingCart />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </div>
     </Router>

@@ -1,8 +1,8 @@
 import React from 'react';
 import PageUnderConstruction from './PageUnderConstruction';
 
-function ShoppingCart() {
+function Login() {
   return <PageUnderConstruction />;
 }
-   
-export default ShoppingCart;
+  
+  export default Login;

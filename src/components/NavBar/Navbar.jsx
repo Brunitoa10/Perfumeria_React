@@ -10,7 +10,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Importa useNavigate
+import { useNavigate } from 'react-router-dom';
 
 export default function ButtonAppBar() {
   const [cartItems] = useState([
@@ -19,7 +19,7 @@ export default function ButtonAppBar() {
   ]);
   const [anchorEl, setAnchorEl] = useState(null);
 
-  const navigate = useNavigate(); // Inicializa useNavigate
+  const navigate = useNavigate();
 
   const handleCartClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -31,7 +31,11 @@ export default function ButtonAppBar() {
 
   const handleViewCart = () => {
     handleCartClose();
-    navigate('/shopping-cart'); // Redirige a la página del carrito
+    navigate('/shopping-cart');
+  };
+
+  const handleLogin = () => {
+    navigate('/login');
   };
 
   return (
@@ -88,8 +92,11 @@ export default function ButtonAppBar() {
               <Typography color="primary">Ver Carrito</Typography>
             </MenuItem>
           </Menu>
-
-          <Button color="inherit">Login</Button>
+         
+           {/* Botón de Login */}
+           <Button color="inherit" onClick={handleLogin}>
+            Login
+          </Button>
         </Toolbar>
       </AppBar>
     </Box>
