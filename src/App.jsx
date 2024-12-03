@@ -3,6 +3,7 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
 import Navbar from './components/NavBar/Navbar';
 import ProductGrid from './components/Product/ProductGrid';
+import CategoryPage from './pages/CategoryPage';
 import Login from './pages/Login';
 import ShoppingCart from './pages/ShoppingCart';
 
@@ -15,6 +16,7 @@ function App() {
           <Route path="/" element={<ProductGrid />} />
           <Route path="/shopping-cart" element={<ShoppingCart />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/category/:category" element={<CategoryPage />} />
         </Routes>
       </div>
     </Router>

@@ -11,6 +11,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import CategoryMenu from '../../pages/CategoryMenu';
 
 export default function ButtonAppBar() {
   const [cartItems] = useState([
@@ -18,6 +19,7 @@ export default function ButtonAppBar() {
     { id: 2, name: 'Product 2', price: 20 },
   ]);
   const [anchorEl, setAnchorEl] = useState(null);
+  const [menuAnchorEl, setMenuAnchorEl] = useState(null);
 
   const navigate = useNavigate();
 
@@ -38,6 +40,16 @@ export default function ButtonAppBar() {
     navigate('/login');
   };
 
+  const handleMenuClick = (event) => {
+    setMenuAnchorEl(event.currentTarget);
+  };
+
+  const handleMenuClose = () => {
+    setMenuAnchorEl(null);
+  };
+
+
+  
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -48,9 +60,12 @@ export default function ButtonAppBar() {
             color="inherit"
             aria-label="menu"
             sx={{ mr: 2 }}
+            onClick={handleMenuClick}
           >
             <MenuIcon />
           </IconButton>
+
+          <CategoryMenu anchorEl={menuAnchorEl} handleClose={handleMenuClose} />
 
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             [Nombre Empresa]
