@@ -13,6 +13,7 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
+
 export default function ProductGrid() {
   const [products, setProducts] = React.useState([]);
 
