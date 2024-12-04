@@ -9,7 +9,7 @@ import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import * as React from 'react';
+import React from 'react';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -22,7 +22,7 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export default function ProductCard({ title, image, description, price, category }) {
+export default function ProductCard({ title, image, description, price, category, onAddToCart }) {
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
@@ -39,12 +39,17 @@ export default function ProductCard({ title, image, description, price, category
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to ShoppingCart">
+        {/* Botón del carrito con la funcionalidad de agregar al carrito */}
+        <IconButton aria-label="add to cart" onClick={onAddToCart}>
           <ShoppingCartOutlined />
         </IconButton>
+
+        {/* Botón de compartir */}
         <IconButton aria-label="share">
           <ShareIcon />
         </IconButton>
+
+        {/* Botón de expansión */}
         <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}
@@ -54,6 +59,8 @@ export default function ProductCard({ title, image, description, price, category
           <ExpandMoreIcon />
         </ExpandMore>
       </CardActions>
+
+      {/* Contenido expandible */}
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography variant="body2" color="text.secondary">

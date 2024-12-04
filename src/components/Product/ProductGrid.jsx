@@ -1,8 +1,8 @@
 import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid2';
+import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
-import * as React from 'react';
+import React, { useEffect, useState } from 'react';
 import { getAllProducts } from '../../services/productService';
 import ProductCard from './ProductCard';
 
@@ -13,11 +13,10 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
+export default function ProductGrid({ addToCart }) {
+  const [products, setProducts] = useState([]);
 
-export default function ProductGrid() {
-  const [products, setProducts] = React.useState([]);
-
-  React.useEffect(() => {
+  useEffect(() => {
     const fetchProducts = async () => {
       const data = await getAllProducts();
       setProducts(data);
@@ -38,6 +37,7 @@ export default function ProductGrid() {
                 description={product.description}
                 price={product.price}
                 category={product.category}
+                onAddToCart={() => addToCart(product)}
               />
             </Item>
           </Grid>

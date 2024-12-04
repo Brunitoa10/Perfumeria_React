@@ -6,8 +6,7 @@ import { useParams } from 'react-router-dom';
 import ProductCard from '../components/Product/ProductCard';
 import { getAllProducts } from '../services/productService';
 
-
-const CategoryPage = () => {
+const CategoryPage = ({ addToCart }) => {
   const { category } = useParams();
   const [products, setProducts] = useState([]);
 
@@ -25,7 +24,6 @@ const CategoryPage = () => {
 
   return (
     <Box sx={{ flexGrow: 1, padding: 2 }}>
-      {/* Centrar el título y capitalizar la categoría */}
       <Typography variant="h4" align="center" sx={{ marginBottom: 3 }}>
         {capitalize(category)} Products
       </Typography>
@@ -37,13 +35,14 @@ const CategoryPage = () => {
         ) : (
           products.map((product) => (
             <Grid item xs={8} sm={6} md={4} lg={3} key={product.id}>
-                  <ProductCard
-                    title={product.title}
-                    image={product.image}
-                    description={product.description}
-                    price={product.price}
-                    category={product.category}
-                  />
+              <ProductCard
+                title={product.title}
+                image={product.image}
+                description={product.description}
+                price={product.price}
+                category={product.category}
+                addToCart={() => addToCart(product)}
+              />
             </Grid>
           ))
         )}

@@ -5,7 +5,6 @@ import Badge from '@mui/material/Badge';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
-import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
@@ -14,25 +13,12 @@ import { useNavigate } from 'react-router-dom';
 import CategoryMenu from '../../pages/CategoryMenu';
 
 export default function ButtonAppBar() {
-  const [cartItems] = useState([
-    { id: 1, name: 'Product 1', price: 10 },
-    { id: 2, name: 'Product 2', price: 20 },
-  ]);
-  const [anchorEl, setAnchorEl] = useState(null);
+ 
   const [menuAnchorEl, setMenuAnchorEl] = useState(null);
 
   const navigate = useNavigate();
 
-  const handleCartClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleCartClose = () => {
-    setAnchorEl(null);
-  };
-
   const handleViewCart = () => {
-    handleCartClose();
     navigate('/shopping-cart');
   };
 
@@ -47,8 +33,6 @@ export default function ButtonAppBar() {
   const handleMenuClose = () => {
     setMenuAnchorEl(null);
   };
-
-
   
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -75,39 +59,15 @@ export default function ButtonAppBar() {
           <IconButton
             color="inherit"
             aria-label="shopping cart"
-            onClick={handleCartClick}
+            onClick={handleViewCart}
           >
-            <Badge badgeContent={cartItems.length} color="error">
-              <ShoppingCartIcon />
+            <Badge badgeContent={0} color="error">
+              <MenuItem onClick={handleViewCart}>
+                <ShoppingCartIcon />
+              </MenuItem>
             </Badge>
           </IconButton>
 
-          {/* Menú desplegable del carrito */}
-          <Menu
-            anchorEl={anchorEl}
-            open={Boolean(anchorEl)}
-            onClose={handleCartClose}
-            PaperProps={{
-              style: {
-                maxHeight: 300,
-                width: '250px',
-              },
-            }}
-          >
-            {cartItems.length > 0 ? (
-              cartItems.map((item) => (
-                <MenuItem key={item.id}>
-                  {item.name} - ${item.price}
-                </MenuItem>
-              ))
-            ) : (
-              <MenuItem disabled>No hay productos en el carrito</MenuItem>
-            )}
-            <MenuItem onClick={handleViewCart}>
-              <Typography color="primary">Ver Carrito</Typography>
-            </MenuItem>
-          </Menu>
-         
            {/* Botón de Login */}
            <Button color="inherit" onClick={handleLogin}>
             Login
