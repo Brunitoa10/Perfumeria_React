@@ -41,7 +41,7 @@ const CategoryPage = ({ addToCart }) => {
                 description={product.description}
                 price={product.price}
                 category={product.category}
-                addToCart={() => addToCart(product)}
+                onAddToCart={() => addToCart(product)}
               />
             </Grid>
           ))
