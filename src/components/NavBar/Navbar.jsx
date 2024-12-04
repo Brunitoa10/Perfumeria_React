@@ -1,16 +1,14 @@
 import MenuIcon from '@mui/icons-material/Menu';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import AppBar from '@mui/material/AppBar';
-import Badge from '@mui/material/Badge';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
-import MenuItem from '@mui/material/MenuItem';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CategoryMenu from '../../pages/CategoryMenu';
+import LoginButton from '../Buttons/LoginButton';
+import ShoppingCartButton from '../Buttons/ShoppingCartButton';
 
 export default function ButtonAppBar() {
  
@@ -33,6 +31,7 @@ export default function ButtonAppBar() {
   const handleMenuClose = () => {
     setMenuAnchorEl(null);
   };
+
   
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -55,23 +54,10 @@ export default function ButtonAppBar() {
             [Nombre Empresa]
           </Typography>
 
-          {/* Carrito de compras */}
-          <IconButton
-            color="inherit"
-            aria-label="shopping cart"
-            onClick={handleViewCart}
-          >
-            <Badge badgeContent={0} color="error">
-              <MenuItem onClick={handleViewCart}>
-                <ShoppingCartIcon />
-              </MenuItem>
-            </Badge>
-          </IconButton>
+   
+          <ShoppingCartButton cartCount={0} onClick={handleViewCart} />
 
-           {/* Botón de Login */}
-           <Button color="inherit" onClick={handleLogin}>
-            Login
-          </Button>
+          <LoginButton onLogin={handleLogin} />
         </Toolbar>
       </AppBar>
     </Box>
