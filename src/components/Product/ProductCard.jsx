@@ -10,6 +10,7 @@ import CardMedia from '@mui/material/CardMedia';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import React from 'react';
+import TextCarousel from '../Carrusel/TextCarousel ';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -30,8 +31,11 @@ export default function ProductCard({ title, image, description, price, category
   };
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
-      <CardHeader title={title} subheader={`$${price}`} />
+    <Card>
+      {/* Aplica el efecto carrusel solo si el título se desborda */}
+      <TextCarousel text={title} />
+
+      <CardHeader subheader={`$${price}`} />
       <CardMedia component="img" height="194" image={image} alt={title} />
       <CardContent>
         <Typography variant="body2" color="text.secondary">
@@ -39,17 +43,12 @@ export default function ProductCard({ title, image, description, price, category
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        {/* Botón del carrito con la funcionalidad de agregar al carrito */}
         <IconButton aria-label="add to cart" onClick={onAddToCart}>
           <ShoppingCartOutlined />
         </IconButton>
-
-        {/* Botón de compartir */}
         <IconButton aria-label="share">
           <ShareIcon />
         </IconButton>
-
-        {/* Botón de expansión */}
         <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}
@@ -59,8 +58,6 @@ export default function ProductCard({ title, image, description, price, category
           <ExpandMoreIcon />
         </ExpandMore>
       </CardActions>
-
-      {/* Contenido expandible */}
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography variant="body2" color="text.secondary">
